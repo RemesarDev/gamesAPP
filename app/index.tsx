@@ -1,13 +1,14 @@
-import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
-import { consolesActions } from '../core/actions/consoles/consolesActions'
+import { Text, View } from 'react-native';
+import { platformsByFamilyActions } from '../core/actions/platform/platformByFamilyActions';
+
 
 const App = () => {
   useEffect(() => {
     const testApi = async () => {
       try {
-        const consoles = await consolesActions();
-        console.log('Consolas:', consoles);
+       const NintendoConsolas = await platformsByFamilyActions(5);
+        console.log('Familia Nintendo:', NintendoConsolas);
       } catch (error) {
         console.error('Error al cargar consolas:', error);
       }
