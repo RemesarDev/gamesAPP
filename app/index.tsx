@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Text, View } from 'react-native';
-import { platformsByFamilyActions } from '../core/actions/platform/platformByFamilyActions';
+import { platformsByFamilyActions } from '../core/actions/platform/getPlatformByFamily.actions';
 
 
 const App = () => {
