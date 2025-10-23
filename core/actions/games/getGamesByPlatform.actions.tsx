@@ -2,7 +2,7 @@ import { Game } from '@/infraestructure/interfaces/game';
 import { GameMapper } from '@/infraestructure/mappers/game.mapper';
 import { igdbApi } from '../../api/games-api';
 
-export const gameByPlatformActions = async (platformId: number): Promise<Game[]> => {
+export const getGameByPlatformActions = async (platformId: number): Promise<Game[]> => {
   try {
     const query = `
       fields *, cover.image_id;

@@ -2,7 +2,7 @@ import { Platform } from '@/infraestructure/interfaces/platform';
 import { PlatformMapper } from '@/infraestructure/mappers/platform.mapper';
 import { igdbApi } from '../../api/games-api';
 
-export const platformsByFamilyActions = async (familyId: number): Promise<Platform[]> => {
+export const getPlatformsByFamilyActions = async (familyId: number): Promise<Platform[]> => {
   try {
     const query = `
       fields id, name, generation, slug, summary, platform_logo.url;

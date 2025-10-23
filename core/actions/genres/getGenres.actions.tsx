@@ -2,7 +2,7 @@ import { Genre } from '@/infraestructure/interfaces/genre';
 import { GenreMapper } from '@/infraestructure/mappers/genres.mapper';
 import { igdbApi } from '../../api/games-api';
 
-export const genresActions = async (): Promise<Genre[]> => {
+export const getGenresActions = async (): Promise<Genre[]> => {
   try {
     const query = `
       fields id, name;
