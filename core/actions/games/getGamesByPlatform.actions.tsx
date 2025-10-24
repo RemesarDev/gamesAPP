@@ -13,7 +13,7 @@ export const getGameByPlatformActions = async (platformId: number): Promise<Game
     const { data } = await igdbApi.post('/games', query);
     const games = data.map(GameMapper.fromIGDBToGame);
 
-    console.log(games);
+    //console.log(games);
     return games;
   } catch (error) {
     console.log(error);
