@@ -1,22 +1,57 @@
-import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
-import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
-import React from 'react';
+import { usePlatformsFamilies } from "@/presentation/hooks/usePlatformsFamilies";
+import React from "react";
+import { View, Text, FlatList, Pressable } from "react-native";
+import { useRouter } from "expo-router";
 
 const Index = () => {
-  const { platformByFamilyQuery } = usePlatformByFamily(5); // caso de prueba
+	const { familyQuery } = usePlatformsFamilies(); // Familias de consolas
+	const router = useRouter();
 
-  const platforms = platformByFamilyQuery.data?.map((platform) => ({
-    id: platform.id,
-    poster: platform.logoUrl ?? '', // Aseguramos que haya un string
-    name: platform.name,
-  }));
+	const platforms = familyQuery.data?.map((platform) => ({
+		id: platform.id,
+		poster: "", // falta imagen
+		name: platform.name,
+	}));
 
-  return (
-    <GeneralHorizontalList
-      title="Consolas de la familia"
-      members={platforms ?? []}
-    />
-  );
+	// Función para determinar el color según la consola
+	const getButtonColor = (platformName: string) => {
+		switch (platformName.toLowerCase()) {
+			case "playstation":
+				return "bg-blue-500";
+			case "xbox":
+				return "bg-green-500";
+			case "nintendo":
+				return "bg-red-500";
+			case "sega":
+				return "bg-cyan-500";
+			default:
+				return "bg-gray-500";
+		}
+	};
+
+	return (
+		<View className="flex-1 bg-white px-4">
+			<FlatList
+				data={platforms?.slice(1, 5)} // Excluye Linux
+				keyExtractor={(item) => item.id.toString()}
+				renderItem={({ item }) => (
+					<Pressable
+						className={`w-full py-4 my-2 rounded-lg ${getButtonColor(item.name)}`}
+						onPress={() =>
+							router.push({
+								pathname: "/family/[id]",
+								params: { id: String(item.id) },
+							})
+						} // Acción al presionar
+					>
+						<Text className="text-lg font-bold text-white text-center">
+							{item.name}
+						</Text>
+					</Pressable>
+				)}
+			/>
+		</View>
+	);
 };
 
 export default Index;
