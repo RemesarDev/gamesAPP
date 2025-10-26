@@ -1,4 +1,5 @@
 import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
+import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
 import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
 import React from 'react';
 
@@ -12,10 +13,12 @@ const Index = () => {
   }));
 
   return (
-    <GeneralHorizontalList
-      familyQuery={familyQuery}
-      members={platforms ?? []}
-    />
+    <MarcoFondo>
+      <GeneralHorizontalList
+        familyQuery={familyQuery}
+        members={platforms ?? []}
+      />
+    </MarcoFondo>
   );
 };
 
