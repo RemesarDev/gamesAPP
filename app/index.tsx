@@ -2,6 +2,7 @@ import GeneralHorizontalList from '@/presentation/components/generic/GeneralHori
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
 import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
 import React from 'react';
+import { ScrollView } from 'react-native';
 
 const Index = () => {
   const { platformByFamilyQuery, familyQuery } = usePlatformByFamily(5); // caso de prueba
@@ -14,10 +15,12 @@ const Index = () => {
 
   return (
     <MarcoFondo>
-      <GeneralHorizontalList
-        familyQuery={familyQuery}
-        members={platforms ?? []}
-      />
+      <ScrollView>
+        <GeneralHorizontalList
+          familyQuery={familyQuery}
+          members={platforms ?? []}
+        />
+      </ScrollView>
     </MarcoFondo>
   );
 };
