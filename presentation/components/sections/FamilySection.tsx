@@ -1,7 +1,7 @@
 import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
 import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
 import React from 'react';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 
 interface Props {
     familyId: number;
@@ -13,8 +13,7 @@ const FamilySection = ({ familyId }: Props) => {
     if (platformByFamilyQuery.isLoading) {
         return (
             <View className="py-4 items-center">
-                <ActivityIndicator size="small" />
-                <Text className="mt-2">Cargando {familyQuery.data?.name ?? 'familia'}...</Text>
+                <Text className="mt-2">Cargando {familyQuery.data?.name ?? ''}...</Text>
             </View>
         );
     }
@@ -22,7 +21,7 @@ const FamilySection = ({ familyId }: Props) => {
     if (platformByFamilyQuery.isError) {
         return (
             <View className="py-4 items-center">
-                <Text>Error cargando {familyQuery.data?.name ?? `familia ${familyId}`}</Text>
+                <Text>Error cargando {familyQuery.data?.name ?? ` ${familyId}`}</Text>
             </View>
         );
     }
