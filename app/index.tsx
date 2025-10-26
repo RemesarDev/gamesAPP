@@ -3,7 +3,7 @@ import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
 import React from 'react';
 
 const Index = () => {
-  const { platformByFamilyQuery } = usePlatformByFamily(5); // caso de prueba
+  const { platformByFamilyQuery, familyQuery } = usePlatformByFamily(5); // caso de prueba
 
   const platforms = platformByFamilyQuery.data?.map((platform) => ({
     id: platform.id,
@@ -13,7 +13,7 @@ const Index = () => {
 
   return (
     <GeneralHorizontalList
-      title="Consolas de la familia"
+      familyQuery={familyQuery}
       members={platforms ?? []}
     />
   );
