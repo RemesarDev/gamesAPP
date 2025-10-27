@@ -13,7 +13,7 @@ export const getPlatformByFamilyActions = async (familyId: number): Promise<Plat
     const { data } = await igdbApi.post('/platforms', query);
     const platforms = data.map(PlatformMapper.fromIGDBToPlatform);
 
-    console.log(platforms);
+    //console.log(platforms);
     return platforms;
 
   } catch (error) {

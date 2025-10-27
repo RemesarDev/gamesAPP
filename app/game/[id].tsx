@@ -1,5 +1,5 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
-import HeaderGame from '@/presentation/components/sections/game.tsx/HeaderGame';
+import HeaderGame from '@/presentation/components/sections/game/HeaderGame';
 import { useGames } from '@/presentation/hooks/useGames';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
