@@ -1,3 +1,4 @@
+import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
 import { useGames } from '@/presentation/hooks/useGames';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
@@ -17,9 +18,12 @@ const GameScreen = () => {
     }
 
   return (
-    <ScrollView>
-        <Text>{id}</Text>
-    </ScrollView>
+
+    <MarcoFondo>
+      <ScrollView>
+          <Text>{id}</Text>
+      </ScrollView>
+    </MarcoFondo>
   )
 }
 
