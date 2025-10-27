@@ -1,6 +1,6 @@
-import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
-import { useGameByPlatform } from '@/presentation/hooks/useGamesByPlatform';
+import GamesSection from '@/presentation/components/sections/GamesSection';
+import { useGenres } from '@/presentation/hooks/useGenres';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
@@ -20,37 +20,35 @@ const PlatformPage = () => {
         );
     }
 
-    const { gameQuery } = useGameByPlatform(platformId);
+    const { genresQuery } = useGenres();
 
-    if (gameQuery.isLoading) {
+    if (genresQuery.isLoading) {
         return (
             <MarcoFondo>
                 <View className="flex-1 items-center justify-center py-8">
                     <ActivityIndicator size="large" />
-                    <Text className="mt-2">Cargando juegos de la plataforma...</Text>
+                    <Text className="mt-2">Cargando géneros...</Text>
                 </View>
             </MarcoFondo>
         );
     }
 
-    if (gameQuery.isError) {
+    if (genresQuery.isError) {
         return (
             <MarcoFondo>
                 <View className="flex-1 items-center justify-center py-8">
-                    <Text>Error al cargar los juegos de la plataforma</Text>
+                    <Text>Error al cargar géneros</Text>
                 </View>
             </MarcoFondo>
         );
     }
-
-    const games = gameQuery.data ?? [];
-    const members = games.map((g) => ({ id: g.id, poster: g.coverUrl ?? '', name: g.name }));
 
     return (
         <MarcoFondo>
             <ScrollView>
-                <Text className="text-3xl font-bold px-4 m-4 text-center color-black">Juegos</Text>
-                <GeneralHorizontalList members={members} />
+                {(genresQuery.data ?? []).map((genre) => (
+                    <GamesSection key={genre.id} platformId={platformId} genreId={genre.id} />
+                ))}
             </ScrollView>
         </MarcoFondo>
     );
