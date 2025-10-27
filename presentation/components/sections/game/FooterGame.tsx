@@ -65,6 +65,7 @@ const FooterGame = ({ id }: Props) => {
                             poster={item.poster}
                             smallPoster={false}
                             desktopAspect={true}
+                        // onPress={(id) => navigate(`/screenshots/${id}`)}
                         />
                     )}
                 />
