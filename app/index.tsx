@@ -1,25 +1,39 @@
-import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
-import { usePlatformByFamily } from '@/presentation/hooks/usePlatformByFamily';
+import FamilySection from '@/presentation/components/sections/FamilySection';
+import { usePlatformsFamilies } from '@/presentation/hooks/usePlatformsFamilies';
 import React from 'react';
-import { ScrollView } from 'react-native';
+import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 
 const Index = () => {
-  const { platformByFamilyQuery, familyQuery } = usePlatformByFamily(5); // caso de prueba
+  const { familyQuery } = usePlatformsFamilies();
 
-  const platforms = platformByFamilyQuery.data?.map((platform) => ({
-    id: platform.id,
-    poster: platform.logoUrl ?? '', // Aseguramos que haya un string
-    name: platform.name,
-  }));
+  if (familyQuery.isLoading) {
+    return (
+      <MarcoFondo>
+        <View className="flex-1 items-center justify-center py-8">
+          <ActivityIndicator size="large" />
+          <Text className="mt-2">Cargando familias...</Text>
+        </View>
+      </MarcoFondo>
+    );
+  }
+
+  if (familyQuery.isError) {
+    return (
+      <MarcoFondo>
+        <View className="flex-1 items-center justify-center py-8">
+          <Text>Error al cargar familias</Text>
+        </View>
+      </MarcoFondo>
+    );
+  }
 
   return (
     <MarcoFondo>
       <ScrollView>
-        <GeneralHorizontalList
-          familyQuery={familyQuery}
-          members={platforms ?? []}
-        />
+        {(familyQuery.data ?? []).map((family) => (
+          <FamilySection key={family.id} familyId={family.id} />
+        ))}
       </ScrollView>
     </MarcoFondo>
   );
