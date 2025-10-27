@@ -9,7 +9,7 @@ interface Props {
     style?: StyleProp<ViewStyle>;
 }
 
-const MarcoFondo = ({ children, colors = ['#dbeeff', '#ffffff'] as const, style }: Props) => {
+const MarcoFondo = ({ children, colors = ['#00D2FF', '#3A47D5', '#FF00C3'] as const, style }: Props) => {
     return (
         <LinearGradient colors={colors} style={[styles.gradient, style]}>
             <SafeAreaView style={styles.safeAreaInner} edges={["top", "bottom", "left", "right"]}>

@@ -21,7 +21,7 @@ const GeneralHorizontalList = ({ title, familyQuery, members, className, onItemP
   return (
     <View className={`${className}`}>
       {resolvedTitle && (
-        <Text className="text-3xl font-bold px-4 m-10 text-center color-black">{resolvedTitle}</Text>
+        <Text className="text-3xl font-bold px-4 m-10 text-center color-white">{resolvedTitle}</Text>
       )}
       <FlatList
         horizontal={true}
