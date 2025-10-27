@@ -6,13 +6,21 @@ interface Props {
     smallPoster?: boolean;
     className?: string;
     name?: string;
+    desktopAspect?: boolean;
     // Optional onPress handler that receives the id of the item
     onPress?: (id: number) => void;
 }
 
-const GeneralPoster = ({ poster, name, smallPoster = false, id, onPress, className }: Props) => {
-    const imgWidth = smallPoster ? 85 : 150;
-    const imgHeight = smallPoster ? 130 : 250;
+const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = false, id, onPress, className }: Props) => {
+    let imgWidth = smallPoster ? 85 : 150;
+    let imgHeight = smallPoster ? 130 : 250;
+
+    // If desktopAspect is requested, force a 16:9 aspect ratio.
+    if (desktopAspect) {
+        // Choose a wider width for desktop-like posters; keep smallPoster smaller.
+        imgWidth = smallPoster ? 160 : 320;
+        imgHeight = Math.round((imgWidth * 9) / 16);
+    }
     const textWidthClass = smallPoster ? 'w-[85px]' : 'w-[150px]';
     const content = (
         <View className={`items-center ${className ?? ''}`}>
