@@ -1,6 +1,6 @@
 import { usePlatformsFamilies } from "@/presentation/hooks/usePlatformsFamilies";
 import { useRouter } from "expo-router";
-import { FlatList, Pressable, Text, View } from "react-native";
+import { FlatList, Image, Pressable, Text, View } from "react-native";
 
 const Home = () => {
 	const { familyQuery } = usePlatformsFamilies(); // Familias de consolas
@@ -30,6 +30,14 @@ const Home = () => {
 
 	return (
 		<View className="flex-1 bg-white px-4">
+			<Text className="text-4xl font-extrabold text-center text-indigo-600 my-6">
+				gameAPP
+			</Text>
+			<Image
+				source={require('@/assets/images/invader-home.gif')}
+				style={{ width: '100%', height: '30%', alignSelf: 'center' }}
+				className='rounded-full'
+			/>
 			<FlatList
 				data={platforms?.slice(1, 5)} // Excluye Linux
 				keyExtractor={(item) => item.id.toString()}
