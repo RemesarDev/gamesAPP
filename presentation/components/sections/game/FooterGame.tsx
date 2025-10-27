@@ -52,6 +52,7 @@ const FooterGame = ({ id }: Props) => {
 
     return (
         <View>
+            <Text className="text-3xl font-bold px-4 m-10 text-center color-white">Screenshots</Text>
             {members.length > 0 ? (
                 <FlatList
                     horizontal
