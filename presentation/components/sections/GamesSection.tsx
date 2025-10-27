@@ -14,13 +14,19 @@ const GamesSection = ({ platformId, genreId }: Props) => {
     const { gameQuery } = useGameByPlatform(platformId, genreId);
     const { genresQuery } = useGenres();
 
+    // Only render once we know there are games; otherwise, render nothing
+    if (gameQuery.isLoading || gameQuery.isError) return null;
+
+    const games = gameQuery.data ?? [];
+    if (!games.length) return null;
+
     const genreName = React.useMemo(() => {
         const list = genresQuery.data ?? [];
         const found = list.find((g: { id: number; name: string }) => g.id === genreId);
         return found?.name;
     }, [genresQuery.data, genreId]);
 
-    const members = (gameQuery.data ?? []).map((g: any) => ({
+    const members = games.map((g: any) => ({
         id: g.id,
         poster: g.coverUrl ?? '',
         name: g.name,
