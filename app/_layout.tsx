@@ -24,7 +24,7 @@ const RootLayout = () => {
         }}
         >
         <Drawer.Screen
-            name="index" // This is the name of the page and must match the url from root
+            name="home" // This is the name of the page and must match the url from root
             options={{
             headerShown: false,
             drawerLabel: 'Inicio',
