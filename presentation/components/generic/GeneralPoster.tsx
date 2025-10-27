@@ -1,4 +1,4 @@
-import { Image, Text, View } from 'react-native';
+import { Image, Pressable, Text, View } from 'react-native';
 
 interface Props {
     id: number;
@@ -6,13 +6,14 @@ interface Props {
     smallPoster?: boolean;
     className?: string;
     name?: string;
+    // Optional onPress handler that receives the id of the item
+    onPress?: (id: number) => void;
 }
 
-const GeneralPoster = ({ poster, name, smallPoster = false, id }: Props) => {
+const GeneralPoster = ({ poster, name, smallPoster = false, id, onPress }: Props) => {
     const imgWidth = smallPoster ? 85 : 150;
     const imgHeight = smallPoster ? 130 : 250;
-
-    return (
+    const content = (
         <View className="items-center">
             <Image
                 source={{ uri: poster }}
@@ -36,5 +37,15 @@ const GeneralPoster = ({ poster, name, smallPoster = false, id }: Props) => {
             </Text>
         </View>
     );
+
+    if (onPress) {
+        return (
+            <Pressable onPress={() => onPress(id)}>
+                {content}
+            </Pressable>
+        );
+    }
+
+    return content;
 };
 export default GeneralPoster

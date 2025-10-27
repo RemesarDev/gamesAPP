@@ -7,9 +7,11 @@ interface Props {
   familyQuery?: any;
   members: any[];
   className?: string;
+  // Optional callback when an item is pressed. Receives the item id.
+  onItemPress?: (id: number) => void;
 }
 
-const GeneralHorizontalList = ({ title, familyQuery, members, className }: Props) => {
+const GeneralHorizontalList = ({ title, familyQuery, members, className, onItemPress }: Props) => {
   let resolvedTitle = title;
 
   if (!resolvedTitle && familyQuery?.data?.name) {
@@ -27,7 +29,13 @@ const GeneralHorizontalList = ({ title, familyQuery, members, className }: Props
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) => (
-          <GeneralPoster name={item.name} id={item.id} poster={item.poster} smallPoster={false} />
+          <GeneralPoster
+            name={item.name}
+            id={item.id}
+            poster={item.poster}
+            smallPoster={false}
+            onPress={onItemPress}
+          />
         )}
       />
     </View>
