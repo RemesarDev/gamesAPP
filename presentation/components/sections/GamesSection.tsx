@@ -2,20 +2,35 @@ import GeneralHorizontalList from '@/presentation/components/generic/GeneralHori
 import { useGameByPlatform } from '@/presentation/hooks/useGamesByPlatform';
 import { useGenres } from '@/presentation/hooks/useGenres';
 import React from 'react';
-import { View } from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
 interface Props {
     platformId: number;
     genreId: number;
 }
 
+// Altura aproximada de la sección (ajústala a tu UI real)
+const SECTION_MIN_HEIGHT = 220;
+
 // Shows a horizontal list of games for a platform filtered by a specific genre
 const GamesSection = ({ platformId, genreId }: Props) => {
     const { gameQuery } = useGameByPlatform(platformId, genreId);
     const { genresQuery } = useGenres();
 
-    // Only render once we know there are games; otherwise, render nothing
-    if (gameQuery.isLoading || gameQuery.isError) return null;
+    // Estado de carga: reserva espacio y muestra spinner
+    if (gameQuery.isLoading) {
+        return (
+            <View
+                className="mb-6"
+                style={{ minHeight: SECTION_MIN_HEIGHT, justifyContent: 'center', alignItems: 'center' }}
+            >
+                <ActivityIndicator size="small" color="#ffffff" />
+            </View>
+        );
+    }
+
+    // Errores o vacío: no mostrar sección
+    if (gameQuery.isError) return null;
 
     const games = gameQuery.data ?? [];
     if (!games.length) return null;
@@ -33,7 +48,7 @@ const GamesSection = ({ platformId, genreId }: Props) => {
     }));
 
     return (
-        <View className="mb-6">
+        <View className="mb-6" style={{ minHeight: SECTION_MIN_HEIGHT }}>
             <GeneralHorizontalList title={genreName} members={members} />
         </View>
     );
