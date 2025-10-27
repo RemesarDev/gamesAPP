@@ -1,4 +1,6 @@
 import { Game } from '@/infraestructure/interfaces/game';
+const DEFAULT_LOGO_URL = 'https://img.freepik.com/vector-gratis/fondo-videojuego-degradado_52683-110709.jpg';
+
 
 export const GameMapper = {
   fromIGDBToGame: (rawGame: any): Game => ({
@@ -12,7 +14,7 @@ export const GameMapper = {
     releaseDate: rawGame.first_release_date,
     coverUrl: rawGame.cover?.image_id
       ? `https://images.igdb.com/igdb/image/upload/t_cover_big/${rawGame.cover.image_id}.jpg`
-      : null,
+      : DEFAULT_LOGO_URL,
     genres: rawGame.genres,
     platforms: rawGame.platforms,
     involvedCompanies: rawGame.involved_companies,
