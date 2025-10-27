@@ -1,6 +1,7 @@
 import GeneralHorizontalList from '@/presentation/components/generic/GeneralHorizontalList';
 import { useGameByPlatform } from '@/presentation/hooks/useGamesByPlatform';
 import { useGenres } from '@/presentation/hooks/useGenres';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 
@@ -16,6 +17,7 @@ const SECTION_MIN_HEIGHT = 220;
 const GamesSection = ({ platformId, genreId }: Props) => {
     const { gameQuery } = useGameByPlatform(platformId, genreId);
     const { genresQuery } = useGenres();
+    const router = useRouter();
 
     // Estado de carga: reserva espacio y muestra spinner
     if (gameQuery.isLoading) {
@@ -47,9 +49,13 @@ const GamesSection = ({ platformId, genreId }: Props) => {
         name: g.name,
     }));
 
+    const handlePress = (id: number) => {
+        router.push({ pathname: '/game/[id]', params: { id: String(id) } });
+    };
+
     return (
         <View className="mb-6" style={{ minHeight: SECTION_MIN_HEIGHT }}>
-            <GeneralHorizontalList title={genreName} members={members} />
+            <GeneralHorizontalList title={genreName} members={members} onItemPress={handlePress}/>
         </View>
     );
 };

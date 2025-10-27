@@ -10,6 +10,8 @@ const PlatformPage = () => {
     const idParam = params.id as string | undefined;
     const platformId = idParam ? Number(idParam) : NaN;
 
+    const { genresQuery } = useGenres();
+
     if (!idParam || isNaN(platformId)) {
         return (
             <MarcoFondo>
@@ -20,7 +22,6 @@ const PlatformPage = () => {
         );
     }
 
-    const { genresQuery } = useGenres();
 
     if (genresQuery.isLoading) {
         return (
