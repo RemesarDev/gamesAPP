@@ -11,7 +11,8 @@ export interface Game {
   genres?: number[];
   platforms?: number[];
   involvedCompanies?: number[];
-  screenshots?: number[];
+  // screenshots now stored as array of image URLs (strings)
+  screenshots?: string[];
   videos?: number[];
   ageRatings?: number[];
   multiplayerModes?: number[];

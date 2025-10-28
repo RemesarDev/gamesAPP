@@ -25,7 +25,13 @@ export const GameMapper = {
     genres: rawGame.genres,
     platforms: rawGame.platforms,
     involvedCompanies: rawGame.involved_companies,
-    screenshots: rawGame.screenshots,
+    // Map screenshots to full URLs when possible (supports objects with image_id or plain strings)
+    screenshots: (rawGame.screenshots ?? []).map((ss: any) => {
+      if (!ss) return null;
+      if (ss?.image_id) return `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${ss.image_id}.jpg`;
+      if (typeof ss === 'string') return ss;
+      return null;
+    }).filter(Boolean),
     videos: rawGame.videos,
     ageRatings: rawGame.age_ratings,
     multiplayerModes: rawGame.multiplayer_modes,
