@@ -32,9 +32,45 @@ const RootLayout = () => {
             drawerIcon: ({color, size}) => <Ionicons name='home' size={size} color={color}/>,
           }}
         />
+
+        <Drawer.Screen
+            name="index" // This is the name of the page and must match the url from root
+            options={{
+            headerShown: false,
+            drawerLabel: 'Familias de Consolas',
+            title: 'Familias de Consolas',
+            drawerIcon: ({color, size}) => <Ionicons name='game-controller' size={size} color={color}/>,
+          }}
+        />
+
+        <Drawer.Screen
+            name="profile/index" // This is the name of the page and must match the url from root
+            options={{
+            headerShown: false,
+            drawerLabel: 'Perfil',
+            title: 'Perfil',
+            drawerIcon: ({color, size}) => <Ionicons name='person' size={size} color={color}/>,
+          }}
+        />
+
+        <Drawer.Screen
+            name="platform/[id]" // This is the name of the page and must match the url from root
+            options={{
+            drawerLabel: () => null,
+            drawerItemStyle: { height: 0, overflow: 'hidden' },
+          }}
+        />
+
+        <Drawer.Screen
+            name="game/[id]" // This is the name of the page and must match the url from root
+            options={{
+            drawerLabel: () => null,
+            drawerItemStyle: { height: 0, overflow: 'hidden' },
+          }}
+        />
       </Drawer>
     </QueryClientProvider>
   )
 }
-
+ 
 export default RootLayout
