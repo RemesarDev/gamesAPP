@@ -54,16 +54,18 @@ const RootLayout = () => {
         />
 
         <Drawer.Screen
-            name="platform/[id]" // This is the name of the page and must match the url from root
+            name="platform" // This is the name of the page and must match the url from root
             options={{
+            headerShown: false,
             drawerLabel: () => null,
             drawerItemStyle: { height: 0, overflow: 'hidden' },
           }}
         />
 
         <Drawer.Screen
-            name="game/[id]" // This is the name of the page and must match the url from root
+            name="game" // This is the name of the page and must match the url from root
             options={{
+            headerShown: false,
             drawerLabel: () => null,
             drawerItemStyle: { height: 0, overflow: 'hidden' },
           }}
