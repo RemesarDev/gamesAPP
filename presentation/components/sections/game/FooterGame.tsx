@@ -1,5 +1,6 @@
 import GeneralPoster from '@/presentation/components/generic/GeneralPoster';
 import { useGames } from '@/presentation/hooks/useGames';
+import { router } from 'expo-router';
 import React from 'react';
 import { FlatList, Text, View } from 'react-native';
 
@@ -34,18 +35,25 @@ const FooterGame = ({ id }: Props) => {
             members.push({ id: game.id, name: `${game.name} - Cover`, poster: game.coverUrl });
         }
 
-        // Screenshots: pueden venir como array de objetos con image_id
+        // Screenshots: el mapper ahora debe proveer un array de URLs (strings).
+        // Aquí asumimos que cada elemento es la URL; como fallback aceptamos objetos con `url`.
         const screenshots = game.screenshots ?? [];
         if (Array.isArray(screenshots) && screenshots.length > 0) {
             screenshots.forEach((ss: any, idx: number) => {
-                // ss puede ser un objeto con image_id o ya una url/string
-                if (ss?.image_id) {
-                    const url = `https://images.igdb.com/igdb/image/upload/t_screenshot_big/${ss.image_id}.jpg`;
-                    // Generar un id numérico único por combinación game+idx
-                    members.push({ id: game.id * 1000 + idx, name: `${game.name} - Screenshot`, poster: url });
-                } else if (typeof ss === 'string') {
+                // Si el mapper devolvió la URL como string, la usamos directamente.
+                if (typeof ss === 'string' && ss.length > 0) {
                     members.push({ id: game.id * 1000 + idx, name: `${game.name} - Screenshot`, poster: ss });
+                    return;
                 }
+
+                // Fallback: si por alguna razón el elemento es un objeto con `url`, úsalo.
+                if (ss && typeof ss.url === 'string' && ss.url.length > 0) {
+                    members.push({ id: game.id * 1000 + idx, name: `${game.name} - Screenshot`, poster: ss.url });
+                    return;
+                }
+
+                // Si no es ninguno de los anteriores, ignoramos el elemento. El mapper debe
+                // encargarse de transformar `image_id` a URL para evitar lógica aquí.
             });
         }
     }
@@ -65,7 +73,14 @@ const FooterGame = ({ id }: Props) => {
                             poster={item.poster}
                             smallPoster={false}
                             desktopAspect={true}
-                        // onPress={(id) => navigate(`/screenshots/${id}`)}
+                            onPress={(pressedId) => {
+                                // `pressedId` already contains the id we assigned to the poster.
+                                // Use it directly as the target id instead of recomputing/multiplying.
+                                const targetId = String(pressedId);
+                                // push a concrete path string; cast to any to avoid the strict route literal union error
+                                // Use the singular 'screenshot' route (file: app/screenshot/[id].tsx)
+                                router.push(`/screenshot/${targetId}` as any);
+                            }}
                         />
                     )}
                 />
