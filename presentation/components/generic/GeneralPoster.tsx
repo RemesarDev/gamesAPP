@@ -9,9 +9,10 @@ interface Props {
     desktopAspect?: boolean;
     // Optional onPress handler that receives the id of the item
     onPress?: (id: number, url: string) => void;
+    showName?: boolean;
 }
 
-const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = false, id, onPress, className }: Props) => {
+const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = false, id, onPress, className, showName = true }: Props) => {
     let imgWidth = smallPoster ? 85 : 150;
     let imgHeight = smallPoster ? 130 : 250;
 
@@ -35,9 +36,11 @@ const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = fals
                 }}
                 resizeMode="contain"
             />
-            <Text className={`${textWidthClass} text-center font-bold mb-2 flex-wrap text-white p-6 bg-black/50 rounded-b-lg border-b border-l border-r border-white`}>
-                {name}
-            </Text>
+            {showName && (
+              <Text className={`${textWidthClass} text-center font-bold mb-2 flex-wrap text-white p-6 bg-black/50 rounded-b-lg border-b border-l border-r border-white`}>
+                  {name}
+              </Text>
+            )}
         </View>
     );
 

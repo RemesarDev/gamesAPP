@@ -73,6 +73,7 @@ const FooterGame = ({ id }: Props) => {
                             poster={item.poster}
                             smallPoster={false}
                             desktopAspect={true}
+                            showName={false}
                             onPress={() => {
                                 // Use the poster URL that we already attached to the item.
                                 // Encode it so slashes/characters don't break the route segment.
