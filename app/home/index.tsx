@@ -23,11 +23,11 @@ const Home = () => {
 					/>
 				</View>
 
-				<View className="flex-1 mt-10 flex-row justify-center">
+				<View className="flex mt-10 flex-row justify-center">
 					<CustomButton
 						icon="game-controller"
 						txtColor="white"
-						className={'border border-3 m-3 border-white w-[40%] h-[100px]'}
+						className={'border border-3 m-3 border-white w-[40%]'}
 						onPress={() =>
 							router.push('/')
 						} // Acción al presionar
@@ -38,9 +38,9 @@ const Home = () => {
 					<CustomButton
 						icon="person"
 						txtColor="white"
-						className={'border border-3 m-3 border-white w-[40%] h-[100px]'}
+						className={'border border-3 m-3 border-white w-[40%]'}
 						onPress={() =>
-							router.push('/profile/index')
+							router.push('/profile')
 						} // Acción al presionar
 					>
 						Perfil
