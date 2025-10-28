@@ -27,7 +27,7 @@ const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = fals
         <View className={`items-center ${className ?? ''}`}>
             <Image
                 source={{ uri: poster }}
-                className="shadow-lg rounded-t-lg border border-white "
+                className="shadow-lg rounded-t-lg border border-pink-800 "
                 style={{
                     width: imgWidth,
                     height: imgHeight,
@@ -37,7 +37,7 @@ const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = fals
                 resizeMode="contain"
             />
             {showName && (
-              <Text className={`${textWidthClass} text-center font-bold mb-2 flex-wrap text-white p-6 bg-black/50 rounded-b-lg border-b border-l border-r border-white`}>
+              <Text className={`${textWidthClass} text-center font-bold mb-2 flex-wrap text-pink-800 p-6 bg-black/50 rounded-b-lg border-b border-l border-r border-pink-800`}>
                   {name}
               </Text>
             )}
