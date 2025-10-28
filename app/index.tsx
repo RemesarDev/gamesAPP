@@ -31,7 +31,7 @@ const Index = () => {
 
   return (
     <MarcoFondo>
-      <MenuButton />
+      <MenuButton className="px-4 mt-10" />
       <ScrollView>
         {(familyQuery.data ?? []).map((family) => (
           <FamilySection key={family.id} familyId={family.id} />

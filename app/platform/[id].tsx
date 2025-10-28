@@ -47,7 +47,7 @@ const PlatformPage = () => {
 
     return (
         <MarcoFondo>
-            <MenuButton />
+            <MenuButton className="px-4 mt-10"/>
             <ScrollView>
                 {(genresQuery.data ?? []).map((genre) => (
                     <GamesSection key={genre.id} platformId={platformId} genreId={genre.id} />

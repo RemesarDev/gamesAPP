@@ -1,4 +1,5 @@
 import MarcoFondo from "@/presentation/components/generic/MarcoFondo";
+import MenuButton from "@/presentation/components/generic/MenuButton";
 import { useRouter } from "expo-router";
 import React from 'react';
 import { Image, Text, View } from 'react-native';
@@ -10,6 +11,7 @@ const ProfileScreen = () => {
 	return (
 		<MarcoFondo>
 			<View className="flex-1 px-4 my-10">
+                <MenuButton />
 				<View className="bg-white flex mt-20 items-center justify-center pt-6 rounded-3xl">
                     <Image
 						source={require('@/assets/images/perfil.jpg')}

@@ -11,8 +11,8 @@ const Home = () => {
 	return (
 		<MarcoFondo
 			colors={['black', 'black','black','#3A47D5', '#FF00C3']}>
-			<View className="flex-1 px-4 my-10">
-				<MenuButton />
+			<MenuButton className="px-4 mt-10"/>
+			<View className="flex-1 px-4 my-5">
 				<View className="mt-20">
 					<Text className="text-4xl font-extrabold text-center text-indigo-300 my-6">
 					gameAPP

@@ -35,6 +35,7 @@ const GeneralHorizontalList = ({ title, familyQuery, members, className, onItemP
             poster={item.poster}
             smallPoster={false}
             onPress={onItemPress}
+            className='p-3'
           />
         )}
       />
