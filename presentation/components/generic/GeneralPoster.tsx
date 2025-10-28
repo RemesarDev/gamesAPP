@@ -8,7 +8,7 @@ interface Props {
     name?: string;
     desktopAspect?: boolean;
     // Optional onPress handler that receives the id of the item
-    onPress?: (id: number) => void;
+    onPress?: (id: number, url: string) => void;
 }
 
 const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = false, id, onPress, className }: Props) => {
@@ -41,7 +41,7 @@ const GeneralPoster = ({ poster, name, smallPoster = false, desktopAspect = fals
 
     if (onPress) {
         return (
-            <Pressable onPress={() => onPress(id)}>
+            <Pressable onPress={() => onPress(id, poster)}>
                 {content}
             </Pressable>
         );

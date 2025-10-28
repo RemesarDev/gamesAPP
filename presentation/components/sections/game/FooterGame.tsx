@@ -73,13 +73,11 @@ const FooterGame = ({ id }: Props) => {
                             poster={item.poster}
                             smallPoster={false}
                             desktopAspect={true}
-                            onPress={(pressedId) => {
-                                // `pressedId` already contains the id we assigned to the poster.
-                                // Use it directly as the target id instead of recomputing/multiplying.
-                                const targetId = String(pressedId);
-                                // push a concrete path string; cast to any to avoid the strict route literal union error
-                                // Use the singular 'screenshot' route (file: app/screenshot/[id].tsx)
-                                router.push(`/screenshot/${targetId}` as any);
+                            onPress={() => {
+                                // Use the poster URL that we already attached to the item.
+                                // Encode it so slashes/characters don't break the route segment.
+                                const encoded = encodeURIComponent(String(item.poster));
+                                router.push(`/screenshot/${encoded}` as any);
                             }}
                         />
                     )}
