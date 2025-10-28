@@ -6,7 +6,7 @@ export interface Game {
   storyline?: string;
   rating?: number;
   aggregatedRating?: number;
-  releaseDate?: number;
+  releaseDate?: string;
   coverUrl?: string | null;
   genres?: number[];
   platforms?: number[];

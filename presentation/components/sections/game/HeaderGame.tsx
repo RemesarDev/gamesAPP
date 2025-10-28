@@ -30,7 +30,7 @@ const HeaderGame = ({poster,nombre}:Props) => {
             </View>
 
             <View className='px-5 mt-5'>
-                <Text className='font-normal'>{nombre}</Text>
+                <Text className='text-2xl font-bold color-white'>{nombre}</Text>
             </View>
         </View>
         </>

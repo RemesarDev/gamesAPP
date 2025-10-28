@@ -1,4 +1,5 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
+import BodyGame from '@/presentation/components/sections/game/BodyGame';
 import FooterGame from '@/presentation/components/sections/game/FooterGame';
 import HeaderGame from '@/presentation/components/sections/game/HeaderGame';
 import { useGames } from '@/presentation/hooks/useGames';
@@ -27,6 +28,13 @@ const GameScreen = () => {
           poster={gameQuery.data?.coverUrl ?? ''}
           nombre={gameQuery.data?.name ?? 'Sin nombre'}
         />
+        
+        <BodyGame
+          descripcion={gameQuery.data?.summary ?? ''}
+          puntaje={gameQuery.data?.aggregatedRating ?? 0}
+          releaseDate={gameQuery.data?.releaseDate ?? ''}
+        />
+
         <FooterGame id={id} />
       </ScrollView>
     </MarcoFondo>
