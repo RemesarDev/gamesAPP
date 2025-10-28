@@ -1,4 +1,5 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
+import MenuButton from '@/presentation/components/generic/MenuButton';
 import FamilySection from '@/presentation/components/sections/FamilySection';
 import { usePlatformsFamilies } from '@/presentation/hooks/usePlatformsFamilies';
 import React from 'react';
@@ -30,6 +31,7 @@ const Index = () => {
 
   return (
     <MarcoFondo>
+      <MenuButton />
       <ScrollView>
         {(familyQuery.data ?? []).map((family) => (
           <FamilySection key={family.id} familyId={family.id} />
