@@ -4,7 +4,11 @@ import { useNavigation } from "expo-router";
 import React from 'react';
 import { Pressable } from 'react-native';
 
-const MenuButton = () => {
+interface MenuButtonProps {
+    className?: string;
+}
+
+const MenuButton = ({ className }: MenuButtonProps) => {
     const navigation = useNavigation();
 
 	const abrirMenu = () => {
@@ -12,8 +16,8 @@ const MenuButton = () => {
 	}
 
   return (
-    
-    <Pressable onPress={() => abrirMenu()}>
+
+    <Pressable className={className} onPress={() => abrirMenu()}>
 	    <Ionicons name='menu-outline' size={30} color='white' className='shadow' />
 	</Pressable>
     
