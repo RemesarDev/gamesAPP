@@ -6,7 +6,7 @@ export const getPlatformFamiliesActions = async (): Promise<PlatformFamily[]> =>
   try {
     const query = `
       fields id, name, slug;
-      sort name asc;
+      sort name desc;
       limit 100;
     `;
     const { data } = await igdbApi.post('/platform_families', query);

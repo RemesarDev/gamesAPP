@@ -7,7 +7,7 @@ export const getPlatformByFamilyActions = async (familyId: number): Promise<Plat
     const query = `
       fields id, name, generation, slug, summary, platform_logo.url;
       where platform_family = ${familyId};
-      sort generation asc;
+      sort generation desc;
       limit 50;
     `;
     const { data } = await igdbApi.post('/platforms', query);
