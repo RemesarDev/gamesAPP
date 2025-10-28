@@ -30,7 +30,7 @@ const Home = () => {
 						txtColor="white"
 						className={'border border-3 m-3 border-white'}
 						onPress={() =>
-							router.push('/')
+							router.push('/familias')
 						} // Acción al presionar
 					>
 						Familias

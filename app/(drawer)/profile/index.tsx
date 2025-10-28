@@ -1,12 +1,9 @@
 import MarcoFondo from "@/presentation/components/generic/MarcoFondo";
 import MenuButton from "@/presentation/components/generic/MenuButton";
-import { useRouter } from "expo-router";
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 
 const ProfileScreen = () => {
-  const router = useRouter();
-
 
 	return (
 		<MarcoFondo>

@@ -5,7 +5,7 @@ import { usePlatformsFamilies } from '@/presentation/hooks/usePlatformsFamilies'
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 
-const Index = () => {
+const Familias = () => {
   const { familyQuery } = usePlatformsFamilies();
 
   if (familyQuery.isLoading) {
@@ -41,4 +41,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Familias;

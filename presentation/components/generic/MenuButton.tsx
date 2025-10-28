@@ -18,7 +18,7 @@ const MenuButton = ({ className }: MenuButtonProps) => {
   return (
 
     <Pressable className={className} onPress={() => abrirMenu()}>
-	    <Ionicons name='menu-outline' size={30} color='white' className='shadow' />
+	    <Ionicons name='menu-outline' size={30} color='red' className='shadow' />
 	</Pressable>
     
   )

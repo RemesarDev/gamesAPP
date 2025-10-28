@@ -1,15 +1,16 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
-import MenuButton from '@/presentation/components/generic/MenuButton';
 import GamesSection from '@/presentation/components/sections/GamesSection';
 import { useGenres } from '@/presentation/hooks/useGenres';
-import { useLocalSearchParams } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
+import { useLocalSearchParams, useNavigation } from 'expo-router';
 import React from 'react';
-import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
+import { ActivityIndicator, Pressable, ScrollView, Text, View } from 'react-native';
 
 const PlatformPage = () => {
     const params = useLocalSearchParams();
     const idParam = params.id as string | undefined;
     const platformId = idParam ? Number(idParam) : NaN;
+    const navigation = useNavigation();
 
     const { genresQuery } = useGenres();
 
@@ -47,7 +48,9 @@ const PlatformPage = () => {
 
     return (
         <MarcoFondo>
-            <MenuButton className="px-4 mt-10"/>
+                <Pressable onPress={() => navigation.goBack()}>
+                    <Ionicons name='arrow-back' size={30} color='red' className='px-4'/>
+                </Pressable>
             <ScrollView>
                 {(genresQuery.data ?? []).map((genre) => (
                     <GamesSection key={genre.id} platformId={platformId} genreId={genre.id} />
