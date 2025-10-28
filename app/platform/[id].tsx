@@ -1,4 +1,5 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
+import MenuButton from '@/presentation/components/generic/MenuButton';
 import GamesSection from '@/presentation/components/sections/GamesSection';
 import { useGenres } from '@/presentation/hooks/useGenres';
 import { useLocalSearchParams } from 'expo-router';
@@ -46,6 +47,7 @@ const PlatformPage = () => {
 
     return (
         <MarcoFondo>
+            <MenuButton />
             <ScrollView>
                 {(genresQuery.data ?? []).map((genre) => (
                     <GamesSection key={genre.id} platformId={platformId} genreId={genre.id} />

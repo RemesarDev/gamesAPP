@@ -1,5 +1,6 @@
 import CustomButton from "@/presentation/components/generic/CustomButton";
 import MarcoFondo from "@/presentation/components/generic/MarcoFondo";
+import MenuButton from "@/presentation/components/generic/MenuButton";
 import { useRouter } from "expo-router";
 import { Image, Text, View } from "react-native";
 
@@ -7,11 +8,11 @@ const Home = () => {
 	
 	const router = useRouter();
 
-
 	return (
 		<MarcoFondo
 			colors={['black', 'black','black','#3A47D5', '#FF00C3']}>
 			<View className="flex-1 px-4 my-10">
+				<MenuButton />
 				<View className="mt-20">
 					<Text className="text-4xl font-extrabold text-center text-indigo-300 my-6">
 					gameAPP

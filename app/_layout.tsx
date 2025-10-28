@@ -68,6 +68,14 @@ const RootLayout = () => {
             drawerItemStyle: { height: 0, overflow: 'hidden' },
           }}
         />
+
+        <Drawer.Screen
+            name="screenshot/[id]" // This is the name of the page and must match the url from root
+            options={{
+            drawerLabel: () => null,
+            drawerItemStyle: { height: 0, overflow: 'hidden' },
+          }}
+        />
       </Drawer>
     </QueryClientProvider>
   )
