@@ -14,7 +14,7 @@ const CustomDrawer = (props: DrawerContentComponentProps) => {
                 />
             </View>
             <View className='flex justify-center items-center rounded-full h-24 w-24'>
-                <Text className='text-indigo-600 font-extrabold text-3xl'>Nombre Jugador</Text>
+                <Text className='font-extrabold text-3xl text-indigo-500'>Nombre Jugador</Text>
             </View>
         </View>
         <DrawerItemList {...props} />
