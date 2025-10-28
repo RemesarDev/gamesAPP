@@ -1,4 +1,5 @@
 import { Ionicons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation } from 'expo-router';
 import React from 'react';
 import { Image, Pressable, Text, useWindowDimensions, View } from 'react-native';
@@ -13,6 +14,16 @@ const HeaderGame = ({poster,nombre}:Props) => {
     const navigation = useNavigation();
     return (
         <>
+        <LinearGradient
+          colors={['rgba(0,0,0,0.6)', 'transparent', 'transparent']} // tercer color añadido
+          start={[0, 0]}
+          style={{
+            height: altoPantalla *0.4,
+            position: 'absolute',
+            zIndex: 1,
+            width: '100%',
+          }}
+        />
         <View style={{
             position:'absolute',
             zIndex:99,

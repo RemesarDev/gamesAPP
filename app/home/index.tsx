@@ -13,7 +13,7 @@ const Home = () => {
 			colors={['black', 'black','black','#3A47D5', '#FF00C3']}>
 			<MenuButton className="px-4 mt-10"/>
 			<View className="flex-1 px-4 my-5">
-				<View className="mt-20">
+				<View>
 					<Text className="text-4xl font-extrabold text-center text-indigo-300 my-6">
 					gameAPP
 					</Text>
@@ -24,11 +24,11 @@ const Home = () => {
 					/>
 				</View>
 
-				<View className="flex mt-10 flex-row justify-center">
+				<View className="flex justify-center">
 					<CustomButton
 						icon="game-controller"
 						txtColor="white"
-						className={'border border-3 m-3 border-white w-[40%]'}
+						className={'border border-3 m-3 border-white'}
 						onPress={() =>
 							router.push('/')
 						} // Acción al presionar
@@ -39,7 +39,7 @@ const Home = () => {
 					<CustomButton
 						icon="person"
 						txtColor="white"
-						className={'border border-3 m-3 border-white w-[40%]'}
+						className={'border border-3 m-3 border-white'}
 						onPress={() =>
 							router.push('/profile')
 						} // Acción al presionar
