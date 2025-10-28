@@ -1,8 +1,10 @@
 import MarcoFondo from '@/presentation/components/generic/MarcoFondo';
 import BodyGame from '@/presentation/components/sections/game/BodyGame';
 import FooterGame from '@/presentation/components/sections/game/FooterGame';
+import FooterVideoGame from '@/presentation/components/sections/game/FooterVideoGame';
 import HeaderGame from '@/presentation/components/sections/game/HeaderGame';
 import { useGames } from '@/presentation/hooks/useGames';
+import { useVideos } from '@/presentation/hooks/useVideos';
 import { useLocalSearchParams } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
@@ -10,7 +12,8 @@ import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 const GameScreen = () => {
   const { id } = useLocalSearchParams();
   const { gameQuery } = useGames(+id);
-
+  const { videoQuery } = useVideos(+id);
+  
   if (gameQuery.isLoading || !gameQuery.data) {
     return (
       <View className='flex flex-1 justify-center items-center'>
@@ -36,6 +39,11 @@ const GameScreen = () => {
         />
 
         <FooterGame id={id} />
+
+        {Array.isArray(videoQuery.data) && videoQuery.data.length > 0 && (
+        <FooterVideoGame videos={videoQuery.data} />
+)}
+
       </ScrollView>
     </MarcoFondo>
   )
